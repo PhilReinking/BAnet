@@ -1,0 +1,14 @@
+<div class="panel panel-primary" ng-hide="userIsOnline()">
+  <div class="panel-heading">
+    <h3 class="panel-title">Post a new Pin</h3>
+  </div>
+  <div class="panel-body">
+    <form ng-submit="newPin()">
+      <div class="form-group">
+        <label for="PinContentId">Content</label>
+        <textarea class="form-control" id="PinContentId" rows="3" ng-model="pin.msg" ng-disabled="isSubmitting" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" ng-disabled="isSubmitting">Submit <i ng-show="isSubmitting" class="fa fa-spinner fa-spin"></i></button>
+    </form>
+  </div>
+</div>

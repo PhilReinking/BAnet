@@ -1,0 +1,22 @@
+<div class="page-header clearfix">
+  <h1>Pinboard<a ng-href="#/pinboard/new" class="btn btn-small btn-info pull-right">New Pin</a></h1>
+</div>
+
+<div class="alert alert-warning" ng-hide="pins"><strong>The pinboard is empty :(</strong> Start writing your <a href="#/pinboard/new">first pinboard entry</a>.</div>
+
+<div class="pin ng-cloak" ng-repeat="pin in pins | orderBy:'doc.created':true" ng-hide="pin.deleted">
+  <div class="media">
+    <a class="pull-left" href="#/pinboard/show/{{pin.id}}">
+      <gravatar-image email="pin.doc.user.email" />
+    </a>
+    <div class="media-body">
+      <h5 class="media-heading">
+        <span class="glyphicon glyphicon-user"></span> {{pin.doc.user.name}}
+        <span class="glyphicon glyphicon-tag"></span> {{pin.doc.category}}
+        <small>{{pin.doc.created | date:'dd. MMMM yyyy @ HH:mm:ss'}}</small>
+        <button type="button" class="btn btn-xs btn-link pull-right" ng-click="deletePost(pin); pin.deleted = true">delete</button>
+      </h5>
+      <p class="lead">{{pin.doc.msg}}</p>
+    </div>
+  </div>
+</div>

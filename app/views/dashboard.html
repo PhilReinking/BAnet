@@ -1,0 +1,56 @@
+<div ng-init="loadUserData()">
+
+  <div class="panel panel-primary" ng-hide="userIsOnline()">
+    <div class="panel-heading">
+      <h3 class="panel-title">Login to BAnet</h3>
+    </div>
+    <div class="panel-body">
+      <form ng-submit="login()">
+        <div class="form-group">
+          <label for="userName">Username</label>
+          <input type="text" class="form-control" id="userName" placeholder="Username" ng-model="user.name" required>
+        </div>
+        <div class="form-group">
+          <label for="userMail">E-Mail</label>
+          <input type="text" class="form-control" id="userMail" placeholder="E-Mail" ng-model="user.email" required>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-class="{disabled: !user.name || !user.email}">Login {{user.name}}<span ng-show="user.email">@</span>{{user.email}}</button>
+      </form>
+    </div>
+  </div>
+
+  <div ng-show="userIsOnline()">
+
+    <div class="panel panel-primary" >
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-tachometer"></i> Dashboard</h3>
+      </div>
+      <div class="panel-body">
+        <p class="lead">Welcome to BAnet. This is an experimental Application to demonstrate the functionality of PP-Sync.</p>
+        <p>Your are logged in as <strong>{{user.name}}</strong> with the id <strong>{{user.id}}</strong>.</p>
+        <p ng-show="dbinfo">Current Database is <strong>{{dbinfo.db_name}}</strong> containing <strong>{{dbinfo.doc_count}}</strong> Documents. The Update Sequence Number is <strong>{{dbinfo.update_seq}}</strong>.</p>
+        <p ng-show="batch.current">Posting Documents to Database: <strong>{{batch.current}}</strong> / <strong>{{batch.target}}</strong> ({{batch.failures}} Errors).</p>
+      </div>
+    </div>
+
+    <div ng-show="false" class="jumbotron">
+      <h1>Hi {{user.name}}!</h1>
+      <p><a class="btn btn-lg btn-success" ng-href="#/pinboard">Take me to the Pinboard!</a></p>
+    </div>
+
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Debug Functions</h3>
+    </div>
+    <div class="panel-body">
+      <button class="btn btn-primary" ng-click="debug.user()">Log User Data</button>
+      <button class="btn btn-primary" ng-click="logout()">Logout</button>
+      <hr>
+      <button class="btn btn-warning" ng-click="debug.database.postBatch()">Put something into Database</button>
+      <button class="btn btn-info" ng-click="debug.database.debug()">Debug Database</button>
+      <button class="btn btn-danger" ng-click="debug.database.destroy()">Destroy Database</button>
+    </div>
+  </div>
+</div>

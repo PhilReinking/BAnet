@@ -1,0 +1,32 @@
+<form ng-submit="switchChannel()">
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon">#</span>
+    <input type="text" class="form-control" ng-model="newChannel" placeholder="Switch Channel">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="submit">Submit</button>
+    </span>
+  </div>
+</form>
+
+<hr>
+
+<div class="page-header clearfix">
+  <h1>#{{channel.humanizedName}}<a ng-href="#/channel/{{channel.name}}/new" class="btn btn-small btn-info pull-right">New Entry</a></h1>
+</div>
+
+<div class="alert alert-warning" ng-hide="entries"><strong>This channel is empty :(</strong> Start writing your <a href="#/channel/{{channel.name}}/new">first channel entry</a>.</div>
+
+<div class="pin ng-cloak" ng-repeat="entry in entries | orderBy:'doc.created':true" ng-hide="entry.deleted">
+  <div class="media">
+    <a class="pull-left" href="#">
+      <gravatar-image email="entry.doc.user.email"></gravatar-image>
+    </a>
+    <div class="media-body">
+      <h5 class="media-heading">
+        <span class="glyphicon glyphicon-user"></span> {{entry.doc.user.name}}
+        <small>{{entry.doc.created | date:'dd. MMMM yyyy @ HH:mm:ss'}}</small>
+      </h5>
+      <p class="lead">{{entry.doc.msg}}</p>
+    </div>
+  </div>
+</div>
