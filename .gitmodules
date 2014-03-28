@@ -1,0 +1,4 @@
+[submodule "app/vendor/pp-sync"]
+	path = app/vendor/pp-sync
+	url = https://github.com/PhilReinking/pp-sync.git
+	branch = master
