@@ -7,7 +7,7 @@ angular.module('banetApp')
       $scope.pins = response;
     });
 
-    ppSyncService.changes().then(function(response) {
+    ppSyncService.fetchChanges().then(function(response) {
       console.log(response);
     }, function(error) {
       console.log(error);
@@ -19,7 +19,7 @@ angular.module('banetApp')
       }
     });
 
-    $scope.deletePost = function(pin) {
+    $scope.deleteDocument = function(pin) {
       ppSyncService.deleteDocument(pin.doc).then(function() {});
     };
 

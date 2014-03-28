@@ -14,7 +14,7 @@
         <span class="glyphicon glyphicon-user"></span> {{pin.doc.user.name}}
         <span class="glyphicon glyphicon-tag"></span> {{pin.doc.category}}
         <small>{{pin.doc.created | date:'dd. MMMM yyyy @ HH:mm:ss'}}</small>
-        <button type="button" class="btn btn-xs btn-link pull-right" ng-click="deletePost(pin); pin.deleted = true">delete</button>
+        <button type="button" class="btn btn-xs btn-link pull-right" ng-click="deleteDocument(pin); pin.deleted = true">delete</button>
       </h5>
       <p class="lead">{{pin.doc.msg}}</p>
     </div>
