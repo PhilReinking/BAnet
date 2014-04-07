@@ -12,6 +12,10 @@ pp-sync uses CouchDB and PouchDB to synchronize data between multiple clients an
 
 ### Installation
 
+
+`git clone --recursive https://github.com/PhilReinking/BAnet.git`
+
+
 ```
 cd ~/path/to/banet
 npm install
